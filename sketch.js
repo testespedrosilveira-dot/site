@@ -1,7 +1,7 @@
 let fileNames = [
-  "https://ik.imagekit.io/q3d43lw6h/site/07.png",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_002.jpeg?updatedAt=1762471376503",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_003.jpeg?updatedAt=1762471375733",
+  "https://ik.imagekit.io/q3d43lw6h/site/thumb_pp_00331.png?updatedAt=1762532608098",
+  "https://ik.imagekit.io/q3d43lw6h/site/CAPA2811_pc1_1.png?updatedAt=1762531855303",
+  "https://ik.imagekit.io/q3d43lw6h/site/thumb_fuzzy.png?updatedAt=1762531656713",
   "https://ik.imagekit.io/q3d43lw6h/site/BudMag_004.jpeg",
   "https://ik.imagekit.io/q3d43lw6h/site/BudMag_005.jpeg?updatedAt=1762471377127",
   "https://ik.imagekit.io/q3d43lw6h/site/BudMag_006.jpeg",
