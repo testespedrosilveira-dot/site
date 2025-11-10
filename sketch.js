@@ -1,12 +1,12 @@
 let fileNames = [
-  "https://ik.imagekit.io/q3d43lw6h/site/thumb_pp_00331.png?updatedAt=1762532608098",
-  "https://ik.imagekit.io/q3d43lw6h/site/CAPA2811_pc1_1.png?updatedAt=1762531855303",
-  "https://ik.imagekit.io/q3d43lw6h/site/thumb_fuzzy.png?updatedAt=1762531656713",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_004.jpeg",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_005.jpeg?updatedAt=1762471377127",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_006.jpeg",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_007.jpeg",
-  "https://ik.imagekit.io/q3d43lw6h/site/BudMag_009.jpeg?updatedAt=1762471376125"
+  "07.png",
+  "BudMag_002.jpeg",
+  "BudMag_003.jpeg",
+  "BudMag_004.jpeg",
+  "BudMag_005.jpeg",
+  "BudMag_006.jpeg",
+  "BudMag_007.jpeg",
+  "BudMag_009.jpeg"
 ];
 
 let imgs = [];
@@ -19,11 +19,11 @@ let ellipseW, ellipseH;
 
 function preload() {
   for (let f of fileNames) {
-    let img = loadImage(f);
+    let img = loadImage(f); // carrega diretamente da raiz
     imgs.push(img);
 
-    // cria versão preto-e-branco
-    imgsGray.push(img); // placeholder, substituído no setup()
+    // placeholder para grayscale, será gerado no setup
+    imgsGray.push(img);
   }
 }
 
@@ -45,7 +45,7 @@ function setup() {
       let b = imgsGray[i].pixels[p + 2];
       let gray = (r + g + b) / 3;
 
-      imgsGray[i].pixels[p]   = gray;
+      imgsGray[i].pixels[p] = gray;
       imgsGray[i].pixels[p + 1] = gray;
       imgsGray[i].pixels[p + 2] = gray;
     }
@@ -70,9 +70,9 @@ function generateRandomEllipseTiles() {
 
   for (let i = 0; i < totalTiles; i++) {
     let angle = random(TWO_PI);
-    let r = sqrt(random()); // distribuição uniforme
+    let r = sqrt(random());
 
-    let px = width / 2  + (ellipseW / 2) * r * cos(angle);
+    let px = width / 2 + (ellipseW / 2) * r * cos(angle);
     let py = height / 2 + (ellipseH / 2) * r * sin(angle);
 
     tiles.push({
@@ -94,14 +94,19 @@ function draw() {
 
     let isMain = false;
 
+    // tile principal (colorido + destaque)
     if (d < tileSize * 1.3) {
       t.rot = lerp(t.rot, 0.10, 0.25);
       t.scale = lerp(t.scale, 1.45, 0.25);
       isMain = true;
-    } else if (d < tileSize * 3) {
+    }
+    // vizinhos encolhendo (P&B)
+    else if (d < tileSize * 3) {
       t.rot = lerp(t.rot, 0, 0.15);
       t.scale = lerp(t.scale, 0.80, 0.12);
-    } else {
+    }
+    // longe (P&B)
+    else {
       t.rot = lerp(t.rot, 0, 0.1);
       t.scale = lerp(t.scale, 1.0, 0.1);
     }
