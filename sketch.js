@@ -1,5 +1,4 @@
 let fileNames = [
-  "07.png",
   "BudMag_002.jpeg",
   "BudMag_003.jpeg",
   "BudMag_004.jpeg",
